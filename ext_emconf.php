@@ -6,7 +6,7 @@ $EM_CONF[$_EXTKEY] = [
     'category' => 'be',
     'author' => 'Quebec.ca',
     'author_company' => 'Québec',
-    'state' => 'alpha',
+    'state' => 'beta',
     'createDirs' => '',
     'clearCacheOnLoad' => 0,
     'version' => '1.0.0',
@@ -17,7 +17,7 @@ $EM_CONF[$_EXTKEY] = [
     ],
     'autoload' => [
         'psr-4' => [
-            'Qc\\QcBePagelanguage\\' => 'Classes/',
+            'Qc\\QcBePageLanguage\\' => 'Classes/',
         ],
     ],
 ];

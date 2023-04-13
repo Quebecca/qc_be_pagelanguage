@@ -1,6 +1,6 @@
 mod{
-    qcWsPreviewLang{
-        used_lang = en
+    tx_qc_be_pagelanguage{
+        used_page_language = 1
     }
 }
 
