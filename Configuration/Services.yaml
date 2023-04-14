@@ -6,3 +6,6 @@ services:
 
   Qc\QcBePageLanguage\:
     resource: '../Classes/*'
+
+  Qc\QcBePageLanguage\Domain\Repository\BackendUserRepository:
+    public: true

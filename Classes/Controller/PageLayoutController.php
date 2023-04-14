@@ -18,8 +18,12 @@ namespace Qc\QcBePageLanguage\Controller;
 
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Backend\Controller\PageLayoutController as Typo3PageLayoutController;
+use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Registry;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+use TYPO3\CMS\Core\Context\Context;
+use Qc\QcBePageLanguage\Domain\Repository\BackendUserRepository;
 /**
  * Class PageLayoutController
  *
@@ -27,30 +31,40 @@ use TYPO3\CMS\Core\Registry;
  */
 class PageLayoutController extends Typo3PageLayoutController{
 
+    /**
+     * @var BackendUserRepository
+     */
+    protected $backendUserRepository;
 
 
     /**
-     * We override this function to implement new solution now we use sys_register to can manipulate the value of page language
+     *  We override this function to implement new solution now we use sys_register to can manipulate the value of page language
      * @param \Psr\Http\Message\ServerRequestInterface $request
      *
      * @return void
+     * @throws \TYPO3\CMS\Core\Context\Exception\AspectNotFoundException
      */
     protected function menuConfig(ServerRequestInterface $request): void{
 
         //Call to the parent function
         parent::menuConfig($request);
 
-        $registry = GeneralUtility::makeInstance(Registry::class);
+        $context = GeneralUtility::makeInstance(Context::class);
+        //$registry = GeneralUtility::makeInstance(Registry::class);
+        $this->backendUserRepository = GeneralUtility::makeInstance(BackendUserRepository::class);
+
+        $backendUserId = $context->getPropertyFromAspect('backend.user', 'id');
 
         if(!is_null($request->getQueryParams()['SET']) && isset($request->getQueryParams()['SET']['language'])){
-            $registry->set('core','page_be_lang',$request->getQueryParams()['SET']['language']);
+            $this->backendUserRepository->updateBackendUserPageLanguage($backendUserId, $request->getQueryParams()['SET']['language']);
+            //$registry->set('core','page_be_lang',$request->getQueryParams()['SET']['language']);
         }
 
         if(count($this->MOD_MENU['language']) > 1){
-            $this->MOD_SETTINGS['language'] = $registry->get('core','page_be_lang');
+            $pageLanguageUid = BackendUtility::getRecord('be_users', $backendUserId, 'page_mod_language', 'true')['page_mod_language'];
+            $this->MOD_SETTINGS['language'] = $pageLanguageUid;
         }else{
             $this->MOD_SETTINGS['language'] = key($this->MOD_MENU['language']);
         }
-
     }
 }
