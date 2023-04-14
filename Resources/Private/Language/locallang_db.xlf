@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2023-04-14UTC07:47:560">
+        <header>
+            <authorName>Quebec.ca</authorName>
+            <authorEmail>Quebec.ca</authorEmail>
+        </header>
+        <body>
+            <trans-unit id="beUsers.page_mod_language">
+                <source>Page module language</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
