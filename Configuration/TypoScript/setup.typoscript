@@ -4,6 +4,6 @@ plugin.tx_qc_be_pagelanguage{
      # For example if it is French just set fr, is Deutch set de, ...
      # for default language just set default
 
-    used_page_language = {$plugin.tx_qc_be_pagelanguage.used_page_language}
+    #used_page_language = {$plugin.tx_qc_be_pagelanguage.used_page_language}
 
 }

@@ -19,12 +19,11 @@ namespace Qc\QcBePageLanguage\Domain\Repository;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Core\Database\Connection;
 
 /**
  * Class BeUsersRepository
  *
- * @package \\${NAMESPACE}
+ * @package Qc\QcBePageLanguage
  */
 class BackendUserRepository extends  Repository{
 

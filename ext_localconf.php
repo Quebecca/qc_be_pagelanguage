@@ -12,6 +12,12 @@ defined('TYPO3') || die();
     "@import 'EXT:qc_be_pagelanguage/Configuration/TypoScript/constants.typoscript'"
 );
 
+//Import TsConfig
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
+    '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:qc_be_pagelanguage/Configuration/TsConfig/pageconfig.tsconfig">');
+
+
+
 /**
  * Override the original pageLayout Controller
  */
