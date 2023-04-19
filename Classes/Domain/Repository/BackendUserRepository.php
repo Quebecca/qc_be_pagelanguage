@@ -16,6 +16,7 @@ declare(strict_types=1);
 
 namespace Qc\QcBePageLanguage\Domain\Repository;
 
+use Doctrine\DBAL\DBALException;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -27,6 +28,9 @@ use TYPO3\CMS\Core\Database\ConnectionPool;
  */
 class BackendUserRepository extends  Repository{
 
+    /**
+     * @throws DBALException
+     */
     public function updateBackendUserPageLanguage($be_user, $id_lang){
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('be_users');
         $queryBuilder

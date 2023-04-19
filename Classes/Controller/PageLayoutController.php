@@ -19,6 +19,7 @@ namespace Qc\QcBePageLanguage\Controller;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Backend\Controller\PageLayoutController as Typo3PageLayoutController;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Core\Context\Exception\AspectNotFoundException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Context\Context;
 use Qc\QcBePageLanguage\Domain\Repository\BackendUserRepository;
@@ -27,22 +28,22 @@ use Qc\QcBePageLanguage\Domain\Repository\BackendUserRepository;
  *
  * @package Qc\QcBePageLanguage
  */
-class PageLayoutController extends Typo3PageLayoutController{
+class PageLayoutController extends Typo3PageLayoutController {
 
     /**
      * @var BackendUserRepository
      */
-    protected $backendUserRepository;
+    protected BackendUserRepository $backendUserRepository;
 
 
     /**
-     *  We override this function to implement new solution now we use sys_register to can manipulate the value of page language
-     * @param \Psr\Http\Message\ServerRequestInterface $request
+     *  We override this function to implement new solution, now we use be_users to manipulate the value of page language
+     * @param ServerRequestInterface $request
      *
      * @return void
-     * @throws \TYPO3\CMS\Core\Context\Exception\AspectNotFoundException
+     * @throws AspectNotFoundException
      */
-    protected function menuConfig(ServerRequestInterface $request): void{
+    protected function menuConfig(ServerRequestInterface $request): void {
 
         //Call to the parent function
         parent::menuConfig($request);
