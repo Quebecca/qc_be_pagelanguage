@@ -28,7 +28,7 @@ class BackendUser extends \TYPO3\CMS\Beuser\Domain\Model\BackendUser{
      *
      * @var string $pageModLanguage
      */
-    protected $pageModLanguage;
+    protected string $pageModLanguage;
 
     /**
      * @return string
