@@ -4,15 +4,13 @@ QC Be Page Language
 *La [version française](#documentation-qc-widgets) de la documentation suit le texte anglais*
 
 ## About
-This extension is used to solve the problem of the module page language menu, currently we found that when we change from a translated page to another page not translated
-The contextual language menu change to the default value, We create this extension to save the value of the language context menu in the backend user to render when we need it
-and make updatable
+In current TYPO3 version, in modules page and list, language selection is lost by switching from a translated page to a non-translated one.
+This extension prevents this irritating issue by persisting the language selection throught page navigation and by restoring it at user’s connection.
 
 -----------
 [Version française]
 # Documentation QC Be Page Language
 
-## À propos
-Cette extension est utilisée pour résoudre le problème du menu de langue de la page du module, actuellement, nous avons constaté que lorsque nous passons d'une page traduite à une autre page non traduite, le menu contextuel de langue change à la valeur par défaut.
-Nous avons créé cette extension pour sauvegarder la valeur du menu contextuel de la langue dans le backend de l'utilisateur pour le rendre quand nous en avons besoin.
-et le rendre actualisable
+## Description
+Dans la version actuelle de TYPO3 en module page ou liste, en passant d'une page traduite à une autre non traduite, le menu contextuel de langue ne conserve pas la valeur sélectionnée et revient à la valeur de langue par défaut. Ce comportement irritant oblige l’utilisateur a constamment refaire son choix de langue lors de sa navigation dans l’arborescence.
+Cette extension permet de conserver la valeur de la langue sélectionnée en module page/liste au changement de page et de la restaurer à la connexion de l’utilisateur.
