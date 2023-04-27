@@ -2,7 +2,7 @@
 
 $EM_CONF[$_EXTKEY] = [
     'title' => 'Qc Backend page Language',
-    'description' => 'This extension allow you to set the default key language for page context menu',
+    'description' => 'This extension brings back the behaviour from TYPO3 v10 that language selection is kept while browsing the Pagetree in Page module with option Languages instead of Column.',
     'category' => 'be',
     'author' => 'Quebec.ca',
     'author_company' => 'Québec',
