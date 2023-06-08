@@ -54,10 +54,12 @@ class PageLayoutController extends Typo3PageLayoutController {
 
             $backendUserId = $context->getPropertyFromAspect('backend.user', 'id');
 
-            if(!is_null($request->getQueryParams()['SET']) && isset($request->getQueryParams()['SET']['language'])){
-                $this->backendUserRepository->updateBackendUserPageLanguage($backendUserId, $request->getQueryParams()['SET']['language']);
-            }
 
+            $queryParams = $request->getQueryParams();
+            if(isset($queryParams['SET']['language'])){
+                $this->backendUserRepository->updateBackendUserPageLanguage($backendUserId, $queryParams['SET']['language']);
+            } 
+ 
             if(count($this->MOD_MENU['language']) > 1){
                 $pageLanguageUid = BackendUtility::getRecord('be_users', $backendUserId, 'page_mod_language', 'true')['page_mod_language'];
                 $this->MOD_SETTINGS['language'] = array_key_exists($pageLanguageUid, $this->MOD_MENU['language'])
