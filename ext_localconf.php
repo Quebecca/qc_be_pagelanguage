@@ -1,5 +1,8 @@
 <?php
 
+use Qc\QcBePageLanguage\Controller\PageCalloutsXclass;
+use Sypets\PageCallouts\Xclass\PageLayoutControllerWithCallouts;
+
 defined('TYPO3') || die();
 
 //Import Setup typo3 By default
@@ -21,6 +24,19 @@ defined('TYPO3') || die();
 /**
  * Override the original pageLayout Controller
  */
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\TYPO3\CMS\Backend\Controller\PageLayoutController::class] = [
+/*$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\TYPO3\CMS\Backend\Controller\PageLayoutController::class] = [
     'className' => \Qc\QcBePageLanguage\Controller\PageLayoutController::class
-];
+];*/
+
+$pageCalloutsVersion = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getExtensionVersion("page_callouts");
+
+if($pageCalloutsVersion !== ''){
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][PageLayoutControllerWithCallouts::class] = [
+        'className' => PageCalloutsXclass::class
+    ];
+}
+else {
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\TYPO3\CMS\Backend\Controller\PageLayoutController::class] = [
+        'className' => \Qc\QcBePageLanguage\Controller\PageLayoutController::class
+    ];
+}
