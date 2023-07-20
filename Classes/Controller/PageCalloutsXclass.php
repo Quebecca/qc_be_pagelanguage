@@ -1,5 +1,14 @@
 <?php
-
+/***
+ *
+ * This file is part of Qc BE domaine color project.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
+ *
+ *  (c) 2022 <techno@quebec.ca>
+ *
+ ***/
 namespace Qc\QcBePageLanguage\Controller;
 use Psr\Http\Message\ServerRequestInterface;
 use Sypets\PageCallouts\Xclass\PageLayoutControllerWithCallouts;
