@@ -19,15 +19,6 @@ defined('TYPO3') || die();
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
     '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:qc_be_pagelanguage/Configuration/TsConfig/pageconfig.tsconfig">');
 
-
-
-/**
- * Override the original pageLayout Controller
- */
-/*$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\TYPO3\CMS\Backend\Controller\PageLayoutController::class] = [
-    'className' => \Qc\QcBePageLanguage\Controller\PageLayoutController::class
-];*/
-
 $pageCalloutsVersion = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getExtensionVersion("page_callouts");
 
 if($pageCalloutsVersion !== ''){

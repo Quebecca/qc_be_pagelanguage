@@ -10,6 +10,7 @@
  *
  ***/
 namespace Qc\QcBePageLanguage\Controller;
+use Doctrine\DBAL\DBALException;
 use Psr\Http\Message\ServerRequestInterface;
 use Sypets\PageCallouts\Xclass\PageLayoutControllerWithCallouts;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
@@ -21,7 +22,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 class PageCalloutsXclass extends PageLayoutControllerWithCallouts
 {
     /**
-     * @var \Qc\QcBePageLanguage\Domain\Repository\BackendUserRepository
+     * @var BackendUserRepository
      */
     protected BackendUserRepository $backendUserRepository;
 
@@ -31,8 +32,10 @@ class PageCalloutsXclass extends PageLayoutControllerWithCallouts
      *
      * @return void
      * @throws AspectNotFoundException
+     * @throws DBALException
      */
     protected function menuConfig(ServerRequestInterface $request): void {
+
         //Call to the parent function
         parent::menuConfig($request);
 
