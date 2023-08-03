@@ -1,7 +1,7 @@
 <?php
 /***
  *
- * This file is part of Qc BE domaine color project.
+ * This file is part of Qc BE Page Language project.
  *
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
