@@ -17,7 +17,7 @@ defined('TYPO3') || die();
 
 //Import TsConfig
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
-    '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:qc_be_pagelanguage/Configuration/TsConfig/pageconfig.tsconfig">');
+    "@import 'EXT:qc_be_pagelanguage/Configuration/TsConfig/pageconfig.tsconfig'");
 
 $pageCalloutsVersion = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getExtensionVersion("page_callouts");
 
