@@ -25,5 +25,7 @@
         "typo3/cms": {
             "extension-key": "qc_be_pagelanguage"
         }
-    }
+    },
+	"version": "12.4"
+
 }
