@@ -17,6 +17,7 @@ use TYPO3\CMS\Backend\Utility\BackendUtility;
 use Qc\QcBePageLanguage\Domain\Repository\BackendUserRepository;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\Exception\AspectNotFoundException;
+use TYPO3\CMS\Core\Utility\DebugUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class PageCalloutsXclass extends PageLayoutControllerWithCallouts
@@ -47,17 +48,19 @@ class PageCalloutsXclass extends PageLayoutControllerWithCallouts
 
             $backendUserId = $context->getPropertyFromAspect('backend.user', 'id');
 
-            if(!is_null($request->getQueryParams()['SET']) && isset($request->getQueryParams()['SET']['language'])){
-                $this->backendUserRepository->updateBackendUserPageLanguage($backendUserId, $request->getQueryParams()['SET']['language']);
+            if(isset($request->getQueryParams()['language']) && !is_null($request->getQueryParams()['language'])){
+                $this->backendUserRepository->updateBackendUserPageLanguage($backendUserId, $request->getQueryParams()['language']);
             }
 
             if(count($this->MOD_MENU['language']) > 1){
                 $pageLanguageUid = BackendUtility::getRecord('be_users', $backendUserId, 'page_mod_language', 'true')['page_mod_language'];
-                $this->MOD_SETTINGS['language'] = array_key_exists($pageLanguageUid, $this->MOD_MENU['language'])
+                $languageKey = array_key_exists($pageLanguageUid, $this->MOD_MENU['language'])
                     ? $pageLanguageUid
-                    : $this->MOD_SETTINGS['language'];
+                    : (int)$this->moduleData->get('language');
+
+                $this->moduleData->set('language', $languageKey);
             }else{
-                $this->MOD_SETTINGS['language'] = key($this->MOD_MENU['language']);
+                $this->moduleData->set('language', key($this->MOD_MENU['language']));
             }
         }
     }

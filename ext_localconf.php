@@ -2,24 +2,24 @@
 
 use Qc\QcBePageLanguage\Controller\PageCalloutsXclass;
 use Sypets\PageCallouts\Xclass\PageLayoutControllerWithCallouts;
-
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 defined('TYPO3') || die();
 
 //Import Setup typo3 By default
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptSetup(
+ExtensionManagementUtility::addTypoScriptSetup(
     "@import 'EXT:qc_be_pagelanguage/Configuration/TypoScript/setup.typoscript'"
 );
 
 //Import Constant typo3 By default
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptConstants(
+ExtensionManagementUtility::addTypoScriptConstants(
     "@import 'EXT:qc_be_pagelanguage/Configuration/TypoScript/constants.typoscript'"
 );
 
 //Import TsConfig
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
+ExtensionManagementUtility::addPageTSConfig(
     "@import 'EXT:qc_be_pagelanguage/Configuration/TsConfig/pageconfig.tsconfig'");
 
-$pageCalloutsVersion = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getExtensionVersion("page_callouts");
+$pageCalloutsVersion = ExtensionManagementUtility::getExtensionVersion("page_callouts");
 
 if($pageCalloutsVersion !== ''){
     $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][PageLayoutControllerWithCallouts::class] = [
