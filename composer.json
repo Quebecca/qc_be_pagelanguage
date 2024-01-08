@@ -14,7 +14,7 @@
         "GPL-2.0-or-later"
     ],
     "require": {
-        "typo3/cms-core": "^12"
+        "typo3/cms-core": "^12.4"
     },
     "autoload": {
         "psr-4": {
@@ -26,6 +26,6 @@
             "extension-key": "qc_be_pagelanguage"
         }
     },
-	"version": "12.4"
+	"version": "2.0.0"
 
 }

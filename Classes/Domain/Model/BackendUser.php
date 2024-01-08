@@ -21,7 +21,8 @@ namespace Qc\QcBePageLanguage\Domain\Model;
  *
  * @package Qc\QcBePageLanguage
  */
-class BackendUser extends \TYPO3\CMS\Beuser\Domain\Model\BackendUser{
+class BackendUser extends \TYPO3\CMS\Beuser\Domain\Model\BackendUser
+{
 
     /**
      * Backend user module page language
@@ -40,12 +41,12 @@ class BackendUser extends \TYPO3\CMS\Beuser\Domain\Model\BackendUser{
 
     /**
      * @param string $pageModLanguage
+     *
      * @return void
      */
     public function setPageModLanguage(string $pageModLanguage)
     {
         $this->pageModLanguage = $pageModLanguage;
     }
-
 
 }
