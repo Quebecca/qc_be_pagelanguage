@@ -19,7 +19,6 @@ use TYPO3\CMS\Backend\Utility\BackendUtility;
 use Qc\QcBePageLanguage\Domain\Repository\BackendUserRepository;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\Exception\AspectNotFoundException;
-use TYPO3\CMS\Core\Utility\DebugUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class PageCalloutsXclass extends PageLayoutControllerWithCallouts

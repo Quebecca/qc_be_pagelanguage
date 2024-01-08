@@ -3,7 +3,7 @@
 declare(strict_types=1);
 /***
  *
- * This file is part of Qc BE domaine color project.
+ * This file is part of Qc BE Page Language project.
  *
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
@@ -54,11 +54,13 @@ class PageLayoutController extends Typo3PageLayoutController {
 
             $backendUserId = $context->getPropertyFromAspect('backend.user', 'id');
 
-            if(!is_null($request->getQueryParams()['SET']) && isset($request->getQueryParams()['SET']['language'])){
-                $this->backendUserRepository->updateBackendUserPageLanguage($backendUserId, $request->getQueryParams()['SET']['language']);
-            }
 
-            if(count($this->MOD_MENU['language']) > 1){
+            $queryParams = $request->getQueryParams();
+            if(isset($queryParams['SET']['language'])){
+                $this->backendUserRepository->updateBackendUserPageLanguage($backendUserId, $queryParams['SET']['language']);
+            } 
+ 
+            if((is_countable($this->MOD_MENU['language']) ? count($this->MOD_MENU['language']) : 0) > 1){
                 $pageLanguageUid = BackendUtility::getRecord('be_users', $backendUserId, 'page_mod_language', 'true')['page_mod_language'];
                 $languageKey = array_key_exists($pageLanguageUid, $this->MOD_MENU['language'])
                     ? $pageLanguageUid
