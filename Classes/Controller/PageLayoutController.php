@@ -62,11 +62,13 @@ class PageLayoutController extends Typo3PageLayoutController {
  
             if((is_countable($this->MOD_MENU['language']) ? count($this->MOD_MENU['language']) : 0) > 1){
                 $pageLanguageUid = BackendUtility::getRecord('be_users', $backendUserId, 'page_mod_language', 'true')['page_mod_language'];
-                $this->MOD_SETTINGS['language'] = array_key_exists($pageLanguageUid, $this->MOD_MENU['language'])
+                $languageKey = array_key_exists($pageLanguageUid, $this->MOD_MENU['language'])
                     ? $pageLanguageUid
-                    : $this->MOD_SETTINGS['language'];
+                    : (int)$this->moduleData->get('language');
+
+                $this->moduleData->set('language', $languageKey);
             }else{
-                $this->MOD_SETTINGS['language'] = key($this->MOD_MENU['language']);
+                $this->moduleData->set('language', key($this->MOD_MENU['language']));
             }
         }
     }

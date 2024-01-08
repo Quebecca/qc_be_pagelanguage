@@ -1,7 +1,0 @@
-mod{
-    tx_qc_be_pagelanguage{
-        use_be_user_page_language = 1
-    }
-}
-
-
